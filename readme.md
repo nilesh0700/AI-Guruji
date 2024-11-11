@@ -1,5 +1,7 @@
 # PROJECT IS IN DEVELOPMENT PHASE AND I AM REBUILDING THIS PROJECTS.
 
+live link : https://ai-guruji.netlify.app/
+
 
 
 # AI Guruji - AI-Powered Career Guidance Platform (SIH - 2023 winner project)

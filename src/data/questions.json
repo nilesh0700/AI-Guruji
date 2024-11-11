@@ -1,0 +1,34 @@
+{
+  "interest": [
+    {
+      "id": "i1",
+      "text": "How much do you enjoy solving complex mathematical problems?",
+      "options": ["Not at all", "Slightly", "Moderately", "Very much", "Extremely"],
+      "category": "analytical"
+    }
+  ],
+  "aptitude": [
+    {
+      "id": "a1",
+      "text": "If 3x + 5 = 20, what is the value of x?",
+      "options": ["3", "5", "7", "15", "None of these"],
+      "category": "numerical"
+    }
+  ],
+  "career": [
+    {
+      "id": "c1",
+      "text": "Which work environment do you prefer?",
+      "options": ["Office setting", "Outdoor environment", "Laboratory", "Creative studio", "Remote work"],
+      "category": "work_environment"
+    }
+  ],
+  "personality": [
+    {
+      "id": "p1",
+      "text": "In group situations, do you prefer to:",
+      "options": ["Lead the discussion", "Contribute occasionally", "Listen and observe", "Take notes", "Coordinate between people"],
+      "category": "leadership"
+    }
+  ]
+}

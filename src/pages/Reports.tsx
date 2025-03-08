@@ -14,7 +14,6 @@ import {
   PointElement,
   LineElement
 } from 'chart.js';
-import CareerChatbot from '../components/CareerChatbot';
 
 ChartJS.register(
   CategoryScale,
@@ -413,20 +412,18 @@ export default function Reports() {
       )}
 
       {(hasInterestResults || hasAptitudeResults || hasNonConventionalResults) && (
-        <div className="mt-8">
-          <h2 className="text-xl font-semibold mb-4">Career Guidance Assistant</h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-4">
+        <div className="mt-8 bg-indigo-50 dark:bg-indigo-900/20 rounded-lg p-6 text-center">
+          <h2 className="text-xl font-semibold mb-2 text-indigo-800 dark:text-indigo-300">Need Personalized Career Guidance?</h2>
+          <p className="text-indigo-700 dark:text-indigo-400 mb-4 max-w-2xl mx-auto">
             Chat with our AI career guidance counselor to get personalized advice based on your assessment results.
             Ask questions about career paths, educational requirements, or skill development.
           </p>
-          <CareerChatbot 
-            assessmentData={{
-              interestResults: hasInterestResults ? interestScores : null,
-              aptitudeResults: hasAptitudeResults ? aptitudeScores : null,
-              nonConventionalResults: hasNonConventionalResults ? nonConventionalScores : null,
-              completedAssessments: [hasInterestResults, hasAptitudeResults, hasNonConventionalResults].filter(Boolean).length
-            }} 
-          />
+          <a 
+            href="/dashboard/chatbot" 
+            className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 transition-colors"
+          >
+            Open AI Career Assistant
+          </a>
         </div>
       )}
     </div>

@@ -3,6 +3,8 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { Timer, AlertCircle } from 'lucide-react';
 import { useAssessmentStore } from '../store/assessmentStore';
 import { useAuthStore } from '../store/authStore';
+import InterestAssessment from '../components/InterestAssessment';
+import AptitudeAssessment from '../components/AptitudeAssessment';
 
 // Define a type for questionsData with specific keys
 type QuestionsData = {
@@ -22,6 +24,16 @@ export default function AssessmentTest() {
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [timeLeft, setTimeLeft] = useState(1200); // 20 minutes
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // If this is the interest assessment, render the InterestAssessment component
+  if (testId === 'interest') {
+    return <InterestAssessment />;
+  }
+
+  // If this is the aptitude test, render the AptitudeAssessment component
+  if (testId === 'aptitude') {
+    return <AptitudeAssessment />;
+  }
 
   const questions = useMemo(() => {
     if (!testId || !(testId in questionsData)) {

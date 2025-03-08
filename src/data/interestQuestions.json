@@ -1,0 +1,857 @@
+[
+  {
+    "id": "int1",
+    "question": "What is Artificial Intelligence (AI)?",
+    "answers": [
+      {
+        "text": "A field of computer science that aims to create intelligent machines.",
+        "score": 1
+      },
+      {
+        "text": "A technique to automate repetitive tasks without intelligence.",
+        "score": 0
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "AIML"
+  },
+  {
+    "id": "int2",
+    "question": "What is difference between Artificial Intelligence and Machine Learning.",
+    "answers": [
+      {
+        "text": "AI is a broader concept, and ML is a subset of AI that focuses on learning from data.",
+        "score": 1
+      },
+      {
+        "text": "AI and ML are terms used interchangeably with no distinction.",
+        "score": 0
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "AIML"
+  },
+  {
+    "id": "int3",
+    "question": "What are the main components of a machine learning system?",
+    "answers": [
+      { 
+        "text": "Data, testing, and evaluation.", 
+        "score": 0 
+      },
+      { 
+        "text": "Model, features, and a learning algorithm.", 
+        "score": 1 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "AIML"
+  },
+  {
+    "id": "int4",
+    "question": "What is natural language processing (NLP) in AI?",
+    "answers": [
+      {
+        "text": "The field of study focusing on the interaction between computers and human languages.",
+        "score": 1
+      },
+      {
+        "text": "The process of converting images into text data.",
+        "score": 0
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "AIML"
+  },
+  {
+    "id": "int5",
+    "question": "Which of the following is a type of machine learning?",
+    "answers": [
+      { 
+        "text": "Superfast computing", 
+        "score": 0 
+      },
+      { 
+        "text": "Supervised learning", 
+        "score": 1 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "AIML"
+  },
+  {
+    "id": "int6",
+    "question": "What is Ohm's Law?",
+    "answers": [
+      {
+        "text": "Voltage equals current multiplied by resistance (V = I * R).",
+        "score": 1
+      },
+      {
+        "text": "Current is inversely proportional to resistance.",
+        "score": 0
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Engineering"
+  },
+  {
+    "id": "int7",
+    "question": "What is the first law of thermodynamics?",
+    "answers": [
+      {
+        "text": "Energy cannot be created or destroyed, only transferred or converted.",
+        "score": 1
+      },
+      {
+        "text": "Heat always flows from a hot body to a cold body.",
+        "score": 0
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Engineering"
+  },
+  {
+    "id": "int8",
+    "question": "What does CPU stand for in computing?",
+    "answers": [
+      { 
+        "text": "Computer Processing Unit.", 
+        "score": 0 
+      },
+      { 
+        "text": "Central Processing Unit.", 
+        "score": 1 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Engineering"
+  },
+  {
+    "id": "int9",
+    "question": "What does the term 'sustainable engineering' involve?",
+    "answers": [
+      {
+        "text": "Developing solutions that meet the needs of the present without compromising the ability of future generations.",
+        "score": 1
+      },
+      {
+        "text": "Prioritizing resource consumption without consideration for the environment.",
+        "score": 0
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Engineering"
+  },
+  {
+    "id": "int10",
+    "question": "Define structural engineering.",
+    "answers": [
+      {
+        "text": "The branch of civil engineering focused on designing and analyzing structures.",
+        "score": 1
+      },
+      {
+        "text": "The study of chemical reactions and properties.",
+        "score": 0
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Engineering"
+  },
+  {
+    "id": "int11",
+    "question": "Who painted the Mona Lisa?",
+    "answers": [
+      { 
+        "text": "Vincent van Gogh.", 
+        "score": 0 
+      },
+      { 
+        "text": "Leonardo da Vinci.", 
+        "score": 1 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Fine Arts & Design"
+  },
+  {
+    "id": "int12",
+    "question": "What does RGB stand for in the context of digital design?",
+    "answers": [
+      { 
+        "text": "Random Graphics Board.", 
+        "score": 0 
+      },
+      { 
+        "text": "Red, Green, Blue.", 
+        "score": 1 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Fine Arts & Design"
+  },
+  {
+    "id": "int13",
+    "question": "What is the primary color wheel used in visual arts?",
+    "answers": [
+      { 
+        "text": "Red, Blue, and Yellow.", 
+        "score": 1 
+      },
+      { 
+        "text": "Green, Orange, and Purple.", 
+        "score": 0 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Fine Arts & Design"
+  },
+  {
+    "id": "int14",
+    "question": "Which art movement is known for its use of everyday objects and commercial imagery?",
+    "answers": [
+      { 
+        "text": "Impressionism", 
+        "score": 0 
+      },
+      { 
+        "text": "Pop Art.", 
+        "score": 1 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Fine Arts & Design"
+  },
+  {
+    "id": "int15",
+    "question": "Which color is a secondary color obtained by mixing blue and yellow?",
+    "answers": [
+      { 
+        "text": "Green", 
+        "score": 1 
+      },
+      { 
+        "text": "Orange", 
+        "score": 0 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Fine Arts & Design"
+  },
+  {
+    "id": "int16",
+    "question": "What is the primary purpose of a stock exchange?",
+    "answers": [
+      { 
+        "text": "Facilitate the buying and selling of stocks.", 
+        "score": 1 
+      },
+      { 
+        "text": "Provide loans to individuals.", 
+        "score": 0 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Commerce"
+  },
+  {
+    "id": "int17",
+    "question": "What is the accounting equation?",
+    "answers": [
+      { 
+        "text": "Assets + Liabilities = Equity", 
+        "score": 0 
+      },
+      { 
+        "text": "Assets = Liabilities + Equity", 
+        "score": 1 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Commerce"
+  },
+  {
+    "id": "int18",
+    "question": "What is the law of demand in economics?",
+    "answers": [
+      {
+        "text": "Quantity demanded decreases as price increases, assuming other factors remain constant.",
+        "score": 1
+      },
+      {
+        "text": "Quantity demanded increases as price increases",
+        "score": 0
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Commerce"
+  },
+  {
+    "id": "int19",
+    "question": "Define inflation in economics.",
+    "answers": [
+      {
+        "text": "The increase in the general price level of goods and services over time",
+        "score": 1
+      },
+      { 
+        "text": "The decrease in the overall supply of money", 
+        "score": 0 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Commerce"
+  },
+  {
+    "id": "int20",
+    "question": "What does ROI stand for in business?",
+    "answers": [
+      { 
+        "text": "Rate of Inflation", 
+        "score": 0 
+      },
+      { 
+        "text": "Return on Investment", 
+        "score": 1 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Commerce"
+  },
+  {
+    "id": "int21",
+    "question": "What is the chemical symbol for gold?",
+    "answers": [
+      { 
+        "text": "Ag", 
+        "score": 0 
+      },
+      { 
+        "text": "Au", 
+        "score": 1 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Science"
+  },
+  {
+    "id": "int22",
+    "question": "Which organelle is known as the 'powerhouse' of the cell?",
+    "answers": [
+      { 
+        "text": "Endoplasmic reticulum", 
+        "score": 0 
+      },
+      { 
+        "text": "Mitochondria", 
+        "score": 1 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Science"
+  },
+  {
+    "id": "int23",
+    "question": "What is the primary greenhouse gas responsible for global warming?",
+    "answers": [
+      { 
+        "text": "Carbon dioxide (CO2).", 
+        "score": 1 
+      },
+      { 
+        "text": "Methane (CH4).", 
+        "score": 0 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Science"
+  },
+  {
+    "id": "int24",
+    "question": "Define photosynthesis in biology",
+    "answers": [
+      {
+        "text": "The process by which plants convert sunlight into energy for growth",
+        "score": 1
+      },
+      { 
+        "text": "The breakdown of glucose in animal cells.", 
+        "score": 0 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Science"
+  },
+  {
+    "id": "int25",
+    "question": "What is the purpose of the periodic table in chemistry?",
+    "answers": [
+      {
+        "text": "To organize and display elements based on their properties.",
+        "score": 1
+      },
+      { 
+        "text": "To list chemical equations.", 
+        "score": 0 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Science"
+  },
+  {
+    "id": "int26",
+    "question": "Which organ is responsible for pumping blood throughout the body?",
+    "answers": [
+      { 
+        "text": "Lungs", 
+        "score": 0 
+      },
+      { 
+        "text": "Heart", 
+        "score": 1 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Medical"
+  },
+  {
+    "id": "int27",
+    "question": "Which virus is responsible for causing COVID-19?",
+    "answers": [
+      { 
+        "text": "SARS-CoV-2", 
+        "score": 1 
+      },
+      { 
+        "text": "Influenza A", 
+        "score": 0 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Medical"
+  },
+  {
+    "id": "int28",
+    "question": "What is the first step in the CPR (cardiopulmonary resuscitation) sequence?",
+    "answers": [
+      { 
+        "text": "Rescue breaths", 
+        "score": 0 
+      },
+      { 
+        "text": "Chest compressions", 
+        "score": 1 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Medical"
+  },
+  {
+    "id": "int29",
+    "question": "Define vaccination in medicine",
+    "answers": [
+      {
+        "text": "The administration of a weakened or inactive pathogen to stimulate the immune system",
+        "score": 1
+      },
+      { 
+        "text": "The removal of toxins from the body.", 
+        "score": 0 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Medical"
+  },
+  {
+    "id": "int30",
+    "question": "What is the function of red blood cells in the human body?",
+    "answers": [
+      { 
+        "text": "Transporting oxygen to tissues", 
+        "score": 1 
+      },
+      { 
+        "text": "Fighting infections", 
+        "score": 0 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Medical"
+  },
+  {
+    "id": "int31",
+    "question": "Which material is traditionally associated with the construction of domes in architecture?",
+    "answers": [
+      { 
+        "text": "Concrete", 
+        "score": 1 
+      },
+      { 
+        "text": "Glass", 
+        "score": 0 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Architecture"
+  },
+  {
+    "id": "int32",
+    "question": "In urban planning, what is the purpose of a green belt?",
+    "answers": [
+      {
+        "text": "To prevent urban sprawl by preserving open space around a city.",
+        "score": 1
+      },
+      { 
+        "text": "To designate the central business district.", 
+        "score": 0 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Architecture"
+  },
+  {
+    "id": "int33",
+    "question": "In architecture, what is the keystone of an arch?",
+    "answers": [
+      {
+        "text": "The central, wedge-shaped stone at the apex of an arch.",
+        "score": 1
+      },
+      { 
+        "text": "The decorative trim around an arch.", 
+        "score": 0 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Architecture"
+  },
+  {
+    "id": "int34",
+    "question": "Define sustainable design in architecture.",
+    "answers": [
+      {
+        "text": "Creating structures that minimize negative impacts on the environment.",
+        "score": 1
+      },
+      { 
+        "text": "Designing large, energy-consuming buildings", 
+        "score": 0 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Architecture"
+  },
+  {
+    "id": "int35",
+    "question": "Which architectural style is known for its use of pointed arches and ribbed vaults?",
+    "answers": [
+      { 
+        "text": "Baroque architecture", 
+        "score": 0 
+      },
+      { 
+        "text": "Gothic architecture", 
+        "score": 1 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Architecture"
+  },
+  {
+    "id": "int36",
+    "question": "What is the binary representation of the decimal number 10?",
+    "answers": [
+      { 
+        "text": "1111", 
+        "score": 0 
+      },
+      { 
+        "text": "1010", 
+        "score": 1 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Computer Science"
+  },
+  {
+    "id": "int37",
+    "question": "What does the acronym 'URL' stand for in the context of web addresses?",
+    "answers": [
+      { 
+        "text": "Uniform Resource Locator", 
+        "score": 1 
+      },
+      { 
+        "text": "Universal Record Locator", 
+        "score": 0 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Computer Science"
+  },
+  {
+    "id": "int38",
+    "question": "What does the term 'API' stand for in software development?",
+    "answers": [
+      { 
+        "text": "Application Programming Interface", 
+        "score": 1 
+      },
+      { 
+        "text": "Advanced Programming Instruction", 
+        "score": 0 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Computer Science"
+  },
+  {
+    "id": "int39",
+    "question": "Which programming language is commonly used for web development?",
+    "answers": [
+      { 
+        "text": "Java", 
+        "score": 0 
+      },
+      { 
+        "text": "JavaScript", 
+        "score": 1 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Computer Science"
+  },
+  {
+    "id": "int40",
+    "question": "Define 'algorithm' in computer science",
+    "answers": [
+      {
+        "text": "A step-by-step set of instructions to solve a problem",
+        "score": 1
+      },
+      { 
+        "text": "A physical computer component", 
+        "score": 0 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Computer Science"
+  },
+  {
+    "id": "int41",
+    "question": "What is the primary goal of genetic engineering in biotechnology?",
+    "answers": [
+      {
+        "text": "To manipulate and modify the DNA of organisms for practical applications",
+        "score": 1
+      },
+      {
+        "text": "To study the natural genetics of organisms without any alteration",
+        "score": 0
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Bio Technology"
+  },
+  {
+    "id": "int42",
+    "question": "Which term describes the study of the function of genes and their products in living organisms?",
+    "answers": [
+      { 
+        "text": "Structural genomics", 
+        "score": 0 
+      },
+      { 
+        "text": "Functional genomics", 
+        "score": 1 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Bio Technology"
+  },
+  {
+    "id": "int43",
+    "question": "What is the primary application of monoclonal antibodies in biotechnology?",
+    "answers": [
+      {
+        "text": "Targeted therapy for diseases and diagnostics.",
+        "score": 1
+      },
+      { 
+        "text": "Agricultural crop improvement.", 
+        "score": 0 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Bio Technology"
+  },
+  {
+    "id": "int44",
+    "question": "Define cloning in biotechnology.",
+    "answers": [
+      {
+        "text": "The process of creating genetically identical copies of an organism.",
+        "score": 1
+      },
+      { 
+        "text": "The analysis of soil microorganisms", 
+        "score": 0 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Bio Technology"
+  },
+  {
+    "id": "int45",
+    "question": "Which technology is used to read and decipher the sequence of nucleotides in DNA?",
+    "answers": [
+      { 
+        "text": "PCR (Polymerase Chain Reaction).", 
+        "score": 0 
+      },
+      { 
+        "text": "DNA sequencing", 
+        "score": 1 
+      },
+      { 
+        "text": "I don't Know", 
+        "score": 0 
+      }
+    ],
+    "category": "Bio Technology"
+  }
+] 

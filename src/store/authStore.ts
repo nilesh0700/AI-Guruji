@@ -42,6 +42,7 @@ export const useAuthStore = create<AuthState>((set) => ({
         user: formatUser(data.user),
         isAuthenticated: true,
         session: data.session,
+        isLoading: false,
       });
     }
 
@@ -77,6 +78,7 @@ export const useAuthStore = create<AuthState>((set) => ({
         user,
         isAuthenticated: true,
         session: data.session,
+        isLoading: false,
       });
     }
 
@@ -84,44 +86,77 @@ export const useAuthStore = create<AuthState>((set) => ({
   },
 
   logout: async () => {
-    await supabase.auth.signOut();
-    set({ user: null, isAuthenticated: false, session: null });
+    try {
+      await supabase.auth.signOut();
+    } catch (error) {
+      console.error('Error during logout:', error);
+    } finally {
+      set({ user: null, isAuthenticated: false, session: null, isLoading: false });
+    }
   },
 
   refreshSession: async () => {
     set({ isLoading: true });
     
-    const { data } = await supabase.auth.getSession();
-    
-    if (data?.session) {
-      const { data: userData } = await supabase.auth.getUser();
-      if (userData?.user) {
-        set({
-          user: formatUser(userData.user),
-          isAuthenticated: true,
-          session: data.session,
-        });
+    try {
+      const { data, error } = await supabase.auth.getSession();
+      
+      if (error) {
+        console.error('Error getting session:', error);
+        set({ user: null, isAuthenticated: false, session: null, isLoading: false });
+        return;
       }
+      
+      if (data?.session) {
+        const { data: userData, error: userError } = await supabase.auth.getUser();
+        
+        if (userError) {
+          console.error('Error getting user:', userError);
+          set({ user: null, isAuthenticated: false, session: null, isLoading: false });
+          return;
+        }
+        
+        if (userData?.user) {
+          set({
+            user: formatUser(userData.user),
+            isAuthenticated: true,
+            session: data.session,
+            isLoading: false,
+          });
+          return;
+        }
+      }
+      
+      // If we get here, there's no valid session
+      set({ user: null, isAuthenticated: false, session: null, isLoading: false });
+    } catch (error) {
+      console.error('Unexpected error in refreshSession:', error);
+      set({ user: null, isAuthenticated: false, session: null, isLoading: false });
     }
-    
-    set({ isLoading: false });
   },
 }));
 
 // Initialize auth state on app load
-supabase.auth.onAuthStateChange((event, session) => {
-  if (session && (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED')) {
-    const user = session.user;
-    useAuthStore.setState({
-      user: formatUser(user),
-      isAuthenticated: true,
-      session,
-    });
-  } else if (event === 'SIGNED_OUT') {
-    useAuthStore.setState({
-      user: null,
-      isAuthenticated: false,
-      session: null,
-    });
-  }
-});
+try {
+  supabase.auth.onAuthStateChange((event, session) => {
+    console.log('Auth state change event:', event);
+    if (session && (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED')) {
+      const user = session.user;
+      useAuthStore.setState({
+        user: formatUser(user),
+        isAuthenticated: true,
+        session,
+        isLoading: false,
+      });
+    } else if (event === 'SIGNED_OUT') {
+      useAuthStore.setState({
+        user: null,
+        isAuthenticated: false,
+        session: null,
+        isLoading: false,
+      });
+    }
+  });
+} catch (error) {
+  console.error('Error setting up auth state change listener:', error);
+}

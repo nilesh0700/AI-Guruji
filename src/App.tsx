@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/Layout';
 import LoadingSpinner from './components/LoadingSpinner';
@@ -6,6 +6,7 @@ import { ThemeProvider } from './components/ThemeProvider';
 import SupabaseAuthProvider from './components/SupabaseAuthProvider';
 import { useThemeStore } from './store/themeStore';
 import { useAuthStore } from './store/authStore';
+import AuthDebug from './components/AuthDebug';
 
 const Home = React.lazy(() => import('./pages/Home'));
 const Dashboard = React.lazy(() => import('./pages/Dashboard'));
@@ -23,10 +24,46 @@ type PrivateRouteProps = {
 };
 
 const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
-  const { isAuthenticated, isLoading } = useAuthStore();
+  const { isAuthenticated, isLoading, refreshSession } = useAuthStore();
+  const [hasChecked, setHasChecked] = useState(false);
   
-  if (isLoading) {
-    return <LoadingSpinner />;
+  useEffect(() => {
+    const checkAuth = async () => {
+      if (!isAuthenticated && !hasChecked) {
+        try {
+          await refreshSession();
+        } catch (error) {
+          console.error('Error checking authentication:', error);
+        } finally {
+          setHasChecked(true);
+        }
+      } else if (!hasChecked) {
+        setHasChecked(true);
+      }
+    };
+    
+    checkAuth();
+  }, [isAuthenticated, refreshSession, hasChecked]);
+  
+  // Add a timeout to prevent infinite loading
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (isLoading && !hasChecked) {
+        console.log('Auth check timed out, proceeding to login');
+        setHasChecked(true);
+      }
+    }, 3000); // 3 second timeout
+    
+    return () => clearTimeout(timeoutId);
+  }, [isLoading, hasChecked]);
+  
+  if (isLoading && !hasChecked) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center">
+        <LoadingSpinner />
+        <p className="mt-4 text-gray-600">Checking authentication...</p>
+      </div>
+    );
   }
   
   return isAuthenticated ? <>{children}</> : <Navigate to="/login" />;
@@ -71,6 +108,7 @@ function App() {
             </Routes>
           </Suspense>
         </BrowserRouter>
+        {import.meta.env.DEV && <AuthDebug />}
       </SupabaseAuthProvider>
     </ThemeProvider>
   );

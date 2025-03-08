@@ -16,9 +16,23 @@ export default function SupabaseAuthProvider({ children }: { children: React.Rea
   const { refreshSession } = useAuthStore();
 
   useEffect(() => {
+    // Add a timeout to prevent infinite loading
+    const timeoutId = setTimeout(() => {
+      if (isInitializing) {
+        console.log('Auth initialization timed out, proceeding anyway');
+        setIsInitializing(false);
+      }
+    }, 5000); // 5 second timeout
+
     const initialize = async () => {
-      await refreshSession();
-      setIsInitializing(false);
+      try {
+        await refreshSession();
+      } catch (error) {
+        console.error('Error refreshing session:', error);
+      } finally {
+        setIsInitializing(false);
+        clearTimeout(timeoutId); // Clear timeout if initialization completes normally
+      }
     };
 
     initialize();
@@ -26,23 +40,27 @@ export default function SupabaseAuthProvider({ children }: { children: React.Rea
     // Set up auth state listener
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event) => {
-        if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
+        console.log('Auth state changed:', event);
+        try {
           await refreshSession();
-        } else if (event === 'SIGNED_OUT') {
-          await refreshSession();
+        } catch (error) {
+          console.error('Error in auth state change handler:', error);
         }
       }
     );
 
     return () => {
       subscription.unsubscribe();
+      clearTimeout(timeoutId);
     };
   }, [refreshSession]);
 
+  // Reduced loading time with simpler UI
   if (isInitializing) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <LoadingSpinner />
+        <p className="ml-2 text-gray-600">Loading...</p>
       </div>
     );
   }

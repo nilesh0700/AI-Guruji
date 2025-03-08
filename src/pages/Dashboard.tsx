@@ -238,9 +238,9 @@ export default function Dashboard() {
     datasets: [{
       label: 'Aptitude Assessment Areas',
       data: hasAptitudeResults ? [75, 80, 65, 70, 85] : [0, 0, 0, 0, 0],
-      backgroundColor: 'rgba(99, 102, 241, 0.5)',
-      borderColor: 'rgb(99, 102, 241)',
-      borderWidth: 1,
+        backgroundColor: 'rgba(99, 102, 241, 0.5)',
+        borderColor: 'rgb(99, 102, 241)',
+        borderWidth: 1,
     }],
   };
 
@@ -337,8 +337,8 @@ export default function Dashboard() {
       <div className="mb-8">
         <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">Welcome to AI Guruji!</h1>
         <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-          Track your progress and continue your career exploration journey
-        </p>
+        Track your progress and continue your career exploration journey
+      </p>
       </div>
 
       {/* API Status Indicator (for debugging) */}

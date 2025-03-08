@@ -14,6 +14,7 @@ import {
   PointElement,
   LineElement
 } from 'chart.js';
+import CareerChatbot from '../components/CareerChatbot';
 
 ChartJS.register(
   CategoryScale,
@@ -408,6 +409,24 @@ export default function Reports() {
               ))}
             </div>
           </div>
+        </div>
+      )}
+
+      {(hasInterestResults || hasAptitudeResults || hasNonConventionalResults) && (
+        <div className="mt-8">
+          <h2 className="text-xl font-semibold mb-4">Career Guidance Assistant</h2>
+          <p className="text-gray-600 dark:text-gray-400 mb-4">
+            Chat with our AI career guidance counselor to get personalized advice based on your assessment results.
+            Ask questions about career paths, educational requirements, or skill development.
+          </p>
+          <CareerChatbot 
+            assessmentData={{
+              interestResults: hasInterestResults ? interestScores : null,
+              aptitudeResults: hasAptitudeResults ? aptitudeScores : null,
+              nonConventionalResults: hasNonConventionalResults ? nonConventionalScores : null,
+              completedAssessments: [hasInterestResults, hasAptitudeResults, hasNonConventionalResults].filter(Boolean).length
+            }} 
+          />
         </div>
       )}
     </div>

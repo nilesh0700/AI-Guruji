@@ -6,7 +6,7 @@
  */
 
 // API Keys
-export const GEMINI_API_KEY = "AIzaSyA7dj035-YkIgzzkivCphc-pKvkMgM1a6w"; // Replace with your actual Gemini API key
+export const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY; // Replace with your actual Gemini API key
 
 // Gemini API Configuration
 export const GEMINI_MODEL = "gemini-2.0-flash"; // The specific Gemini model to use

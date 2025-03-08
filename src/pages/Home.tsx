@@ -1,9 +1,12 @@
-import React from 'react';
+
 import { Link } from 'react-router-dom';
 import { Brain, Target, FileText, MessageSquare, ArrowRight, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useAuthStore } from '../store/authStore';
 
 function Home() {
+  const { isAuthenticated } = useAuthStore();
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-indigo-50 to-white dark:from-gray-900 dark:to-gray-800">
       <nav className="absolute top-0 w-full bg-transparent z-10">
@@ -14,18 +17,29 @@ function Home() {
               <span className="ml-2 text-xl font-bold text-gray-900 dark:text-white">AI Guruji</span>
             </Link>
             <div className="flex items-center space-x-4">
-              <Link
-                to="/login"
-                className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
-              >
-                Sign In
-              </Link>
-              <Link
-                to="/register"
-                className="bg-indigo-600 text-white px-4 py-2 rounded-full hover:bg-indigo-700 transition-colors"
-              >
-                Get Started
-              </Link>
+              {isAuthenticated ? (
+                <Link
+                  to="/dashboard"
+                  className="bg-indigo-600 text-white px-4 py-2 rounded-full hover:bg-indigo-700 transition-colors"
+                >
+                  Dashboard
+                </Link>
+              ) : (
+                <>
+                  <Link
+                    to="/login"
+                    className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+                  >
+                    Sign In
+                  </Link>
+                  <Link
+                    to="/register"
+                    className="bg-indigo-600 text-white px-4 py-2 rounded-full hover:bg-indigo-700 transition-colors"
+                  >
+                    Get Started
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>

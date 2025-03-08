@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Target, Brain, Lightbulb, UserCircle2 } from 'lucide-react';
+import { Target, Brain, Briefcase } from 'lucide-react';
 
 const assessments = [
   {
@@ -22,23 +22,32 @@ const assessments = [
     color: 'bg-purple-500',
   },
   {
-    id: 'career',
-    title: 'Career Explorer',
-    description: 'Explore various career paths suited to your profile.',
+    id: 'nonconventional',
+    title: 'Non-Conventional Careers',
+    description: 'Explore alternative and emerging career paths that match your interests.',
     duration: '25 minutes',
-    questions: 45,
-    icon: Lightbulb,
-    color: 'bg-green-500',
+    questions: 105,
+    icon: Briefcase,
+    color: 'bg-teal-500',
   },
-  {
-    id: 'personality',
-    title: 'Personality Assessment',
-    description: 'Understand your personality type and work preferences.',
-    duration: '15 minutes',
-    questions: 30,
-    icon: UserCircle2,
-    color: 'bg-yellow-500',
-  },
+  // {
+  //   id: 'career',
+  //   title: 'Career Explorer',
+  //   description: 'Explore various career paths suited to your profile.',
+  //   duration: '25 minutes',
+  //   questions: 45,
+  //   icon: Lightbulb,
+  //   color: 'bg-green-500',
+  // },
+  // {
+  //   id: 'personality',
+  //   title: 'Personality Assessment',
+  //   description: 'Understand your personality type and work preferences.',
+  //   duration: '15 minutes',
+  //   questions: 30,
+  //   icon: UserCircle2,
+  //   color: 'bg-yellow-500',
+  // },
 ];
 
 export default function Assessments() {

@@ -32,8 +32,10 @@ export default function Reports() {
   const topSkills = getTopSkills();
   const [interestScores, setInterestScores] = useState<Record<string, number>>({});
   const [aptitudeScores, setAptitudeScores] = useState<Record<string, number>>({});
+  const [nonConventionalScores, setNonConventionalScores] = useState<Record<string, number>>({});
   const [hasInterestResults, setHasInterestResults] = useState(false);
   const [hasAptitudeResults, setHasAptitudeResults] = useState(false);
+  const [hasNonConventionalResults, setHasNonConventionalResults] = useState(false);
 
   useEffect(() => {
     // Load interest test scores from localStorage
@@ -59,9 +61,38 @@ export default function Reports() {
         console.error('Error parsing aptitude test scores:', error);
       }
     }
+
+    // Load non-conventional careers test scores from localStorage
+    // Try both possible keys to ensure backward compatibility
+    const storedNonConventionalScores = 
+      localStorage.getItem('nonConventionalTestScores') || 
+      localStorage.getItem('nonconventionalTestScores');
+    
+    if (storedNonConventionalScores) {
+      try {
+        const parsedScores = JSON.parse(storedNonConventionalScores);
+        setNonConventionalScores(parsedScores);
+        setHasNonConventionalResults(true);
+        console.log('Loaded non-conventional scores:', parsedScores);
+      } catch (error) {
+        console.error('Error parsing non-conventional test scores:', error);
+      }
+    }
   }, []);
 
-  if (!hasCompletedAllTests() && !hasInterestResults && !hasAptitudeResults) {
+  useEffect(() => {
+    console.log('Current state:', {
+      hasInterestResults,
+      hasAptitudeResults,
+      hasNonConventionalResults,
+      nonConventionalScores
+    });
+  }, [hasInterestResults, hasAptitudeResults, hasNonConventionalResults, nonConventionalScores]);
+
+  // Force display of non-conventional results section for debugging
+  const forceShowNonConventional = true;
+
+  if (!hasCompletedAllTests() && !hasInterestResults && !hasAptitudeResults && !hasNonConventionalResults) {
     return (
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-8">
@@ -89,7 +120,7 @@ export default function Reports() {
       data: hasInterestResults 
         ? Object.entries(interestScores)
             .filter(([key]) => key !== 'Total Score')
-            .map(([_, value]) => value)
+            .map(([, value]) => value)
         : [85, 65, 45, 75, 60],
       backgroundColor: [
         'rgba(99, 102, 241, 0.5)',
@@ -132,10 +163,32 @@ export default function Reports() {
       data: hasAptitudeResults 
         ? Object.entries(aptitudeScores)
             .filter(([key]) => key !== 'Total Score')
-            .map(([_, value]) => value)
+            .map(([, value]) => value)
         : [70, 80, 65, 75],
       backgroundColor: 'rgba(99, 102, 241, 0.5)',
       borderColor: 'rgb(99, 102, 241)',
+      borderWidth: 1,
+    }],
+  };
+
+  // Prepare non-conventional careers data from localStorage if available
+  const nonConventionalData = {
+    labels: hasNonConventionalResults 
+      ? Object.keys(nonConventionalScores)
+          .filter(key => key !== 'Total Score')
+          .slice(0, 10) // Show top 10 categories for readability
+      : ['Content Creator', 'Photography', 'Fitness Trainer', 'Event Management', 'Actor'],
+    datasets: [{
+      label: 'Non-Conventional Career Scores',
+      data: hasNonConventionalResults 
+        ? Object.entries(nonConventionalScores)
+            .filter(([key]) => key !== 'Total Score')
+            .sort((a, b) => b[1] - a[1]) // Sort by score in descending order
+            .slice(0, 10) // Show top 10 categories
+            .map(([, value]) => value)
+        : [4, 3, 5, 2, 3],
+      backgroundColor: 'rgba(20, 184, 166, 0.5)', // Teal color to match the assessment icon
+      borderColor: 'rgb(20, 184, 166)',
       borderWidth: 1,
     }],
   };
@@ -193,6 +246,18 @@ export default function Reports() {
             </div>
             <div className="h-64">
               <Bar data={aptitudeData} />
+            </div>
+          </div>
+        )}
+
+        {(hasNonConventionalResults || forceShowNonConventional) && (
+          <div className="bg-white p-6 rounded-lg shadow-sm">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-semibold text-gray-900">Non-Conventional Careers</h3>
+              <BarChart3 className="h-5 w-5 text-gray-400" />
+            </div>
+            <div className="h-64">
+              <Bar data={nonConventionalData} />
             </div>
           </div>
         )}
@@ -274,6 +339,39 @@ export default function Reports() {
                         <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{score}</td>
                       </tr>
                     ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {(hasNonConventionalResults || forceShowNonConventional) && (
+        <div className="bg-white rounded-lg shadow-sm mb-8">
+          <div className="p-6">
+            <h2 className="text-xl font-semibold text-gray-900 mb-4">
+              Non-Conventional Careers Assessment Results
+            </h2>
+            <div className="space-y-4">
+              <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+                <table className="min-w-full divide-y divide-gray-300">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900">Career Path</th>
+                      <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Score</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200 bg-white">
+                    {Object.entries(nonConventionalScores)
+                      .filter(([category]) => category !== 'Total Score')
+                      .sort((a, b) => b[1] - a[1]) // Sort by score in descending order
+                      .map(([category, score]) => (
+                        <tr key={category}>
+                          <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900">{category}</td>
+                          <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{score}</td>
+                        </tr>
+                      ))}
                   </tbody>
                 </table>
               </div>

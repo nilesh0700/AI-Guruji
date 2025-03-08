@@ -1,5 +1,6 @@
 import interestQuestions from '../data/interestQuestions.json';
 import aptitudeQuestions from '../data/aptitudeQuestions.json';
+import nonConventionalQuestions from '../data/nonConventionalQuestions.json';
 
 // Define the Question type
 export interface Question {
@@ -19,7 +20,10 @@ export const getQuestionsByCategory = (category: string): Question[] => {
       return interestQuestions;
     case 'aptitude':
       return aptitudeQuestions;
+    case 'nonconventional':
+      return nonConventionalQuestions;
     default:
+      console.warn(`No questions found for category: ${category}`);
       return [];
   }
 };
@@ -28,7 +32,8 @@ export const getQuestionsByCategory = (category: string): Question[] => {
 export const getAllQuestions = (): Question[] => {
   return [
     ...interestQuestions,
-    ...aptitudeQuestions
+    ...aptitudeQuestions,
+    ...nonConventionalQuestions
   ];
 };
 

@@ -2,17 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Timer, AlertCircle } from 'lucide-react';
 import { useAssessmentStore } from '../store/assessmentStore';
-import { useAuthStore } from '../store/authStore';
-import InterestAssessment from '../components/InterestAssessment';
-import AptitudeAssessment from '../components/AptitudeAssessment';
-
-// Define a type for questionsData with specific keys
-type QuestionsData = {
-  interest: { id: string; text: string; options: string[]; category: string; }[];
-  aptitude: { id: string; text: string; options: string[]; category: string; }[];
-  career: { id: string; text: string; options: string[]; category: string; }[];
-  personality: { id: string; text: string; options: string[]; category: string; }[];
-};
+import GenericAssessment from '../components/GenericAssessment';
 
 // Import questionsData as JSON
 import questionsData from '../data/questions.json';
@@ -25,21 +15,12 @@ export default function AssessmentTest() {
   const [timeLeft, setTimeLeft] = useState(1200); // 20 minutes
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // If this is the interest assessment, render the InterestAssessment component
-  if (testId === 'interest') {
-    return <InterestAssessment />;
-  }
-
-  // If this is the aptitude test, render the AptitudeAssessment component
-  if (testId === 'aptitude') {
-    return <AptitudeAssessment />;
-  }
-
+  // Always call hooks at the top level, before any conditional returns
   const questions = useMemo(() => {
     if (!testId || !(testId in questionsData)) {
       return [];
     }
-    return questionsData[testId as keyof QuestionsData]; // Assert testId as keyof QuestionsData
+    return questionsData[testId as keyof typeof questionsData];
   }, [testId]);
 
   const currentQ = questions[currentQuestion];
@@ -48,16 +29,28 @@ export default function AssessmentTest() {
     if (timeLeft > 0) {
       const timer = setInterval(() => setTimeLeft(t => t - 1), 1000);
       return () => clearInterval(timer);
-    } else {
+    } else if (currentQ) {
       handleSubmit();
     }
-  }, [timeLeft]);
+  }, [timeLeft, currentQ]);
+
+  // Check if we're using one of our specialized assessment types
+  const isSpecializedAssessment = ['interest', 'aptitude', 'nonconventional'].includes(testId || '');
+  console.log(`Assessment type: ${testId}, isSpecialized: ${isSpecializedAssessment}`);
+
+  // If this is a specialized assessment type, render the GenericAssessment component
+  if (isSpecializedAssessment && testId) {
+    console.log(`Rendering GenericAssessment for ${testId}`);
+    return <GenericAssessment assessmentType={testId} />;
+  }
 
   const handleAnswer = (answer: string) => {
-    setAnswers(prev => ({
-      ...prev,
-      [currentQ.id]: answer
-    }));
+    if (currentQ) {
+      setAnswers(prev => ({
+        ...prev,
+        [currentQ.id]: answer
+      }));
+    }
   };
 
   const handleNext = () => {
@@ -70,31 +63,6 @@ export default function AssessmentTest() {
     if (currentQuestion > 0) {
       setCurrentQuestion(c => c - 1);
     }
-  };
-
-  const calculateScores = () => {
-    const scores: Record<string, number> = {};
-    const categories = new Set(questions.map(q => q.category));
-
-    categories.forEach(category => {
-      scores[category] = 0;
-    });
-
-    questions.forEach(question => {
-      const answer = answers[question.id];
-      if (answer) {
-        const optionIndex = question.options.indexOf(answer);
-        const score = (optionIndex / (question.options.length - 1)) * 100;
-        scores[question.category] = (scores[question.category] || 0) + score;
-      }
-    });
-
-    categories.forEach(category => {
-      const categoryQuestions = questions.filter(q => q.category === category).length;
-      scores[category] = Math.round(scores[category] / categoryQuestions);
-    });
-
-    return scores;
   };
 
   const handleSubmit = async () => {
@@ -182,7 +150,7 @@ export default function AssessmentTest() {
           </h3>
 
           <div className="space-y-3">
-            {currentQ.options.map((option, index) => (
+            {currentQ.options.map((option: string, index: number) => (
               <label
                 key={index}
                 className={`block relative rounded-lg border p-4 cursor-pointer hover:border-indigo-500 transition-colors ${
